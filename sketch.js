@@ -31,11 +31,19 @@ var createScene = function () {
     // Default intensity is 1. Let's dim the light a small amount
     light.intensity = 0.7;
 
-    var newsphere = createSphere(0, 1, 0, 2);
-    newsphere.material = hexMat('#ff0000');
+    var plants = new meshModel('solar_system.glb',1.3,0,2,0);
+
+    var ufo = new meshModel('ufo.glb',1,-3,3,-3);
+
+    var anim = {subj: ufo.position, prop: 'x', val: 9}
+    
+    animate(anim,scene,15,true);  
+
+   
 
     // Our built-in 'ground' shape.
     var ground = BABYLON.MeshBuilder.CreateGround("ground", {width: 6, height: 6}, scene);
+    ground.material = hexMat('000000')
 
     return scene;
 };
